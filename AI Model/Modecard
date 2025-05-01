@@ -1,0 +1,89 @@
+Model Card: MoodengTalk - AI for Decoding Pygmy Hippopotamus Communication
+
+Model Overview
+
+Model Name: MoodengTalk
+Version: 1.0.0
+Created By: [Time]
+Date: May 1, 2025
+
+Model Type: Multimodal AI System (Image + Audio)
+Primary Use Case: Decoding behavior and communication patterns of the Pygmy Hippopotamus (Moodeng) from video and audio streams.
+Secondary Use Case: Assisting animal behaviorists and conservationists in understanding animal behavior.
+Environment: Designed to work in a zoo or wildlife monitoring environment.
+Ethical Considerations: Non-invasive AI system, using publicly available footage.
+
+⸻
+
+Model Architecture
+
+The MoodengTalk system is a multimodal AI model that combines visual and audio features to interpret animal communication patterns:
+	1.	Visual Model:
+	•	Backbone: ResNet50 (pretrained on ImageNet, fine-tuned on the Pygmy Hippopotamus data).
+	•	Output: 2048-dimensional feature vector representing the image (frames) from the video.
+	•	Role: Identify posture, body movement, and physical interactions.
+	2.	Audio Model:
+	•	Backbone: Wav2Vec2 (pretrained on 960 hours of speech data).
+	•	Output: 768-dimensional feature vector extracted from 5-second audio chunks.
+	•	Role: Decode vocalizations and sounds produced by the Pygmy Hippopotamus.
+	3.	Fusion:
+	•	Concatenate the visual and audio embeddings (2048 + 768) and process through a cross-modal attention layer.
+	•	Final Output: A fused feature vector that can be used for classification or clustering of behavior types.
+
+⸻
+
+Training and Evaluation
+
+Training Data:
+	•	10 hours of live stream video and audio of Moodeng (Pygmy Hippopotamus), annotated for 4 behavior classes (e.g., feeding, resting, socializing, alert).
+	•	Data split: 70% training, 15% validation, 15% test.
+
+Performance Metrics:
+	•	Accuracy: 87.5% on test set.
+	•	F1-Score: 0.85 (macro-averaged).
+	•	Inference Latency: 150 ms per multimodal input (on an NVIDIA T4 GPU).
+	•	Training Time: 10 hours on a single GPU (NVIDIA T4).
+
+Model Limitations:
+	•	Performance degrades under low-light conditions or high background noise.
+	•	Misclassifies certain animal behaviors when the background noise exceeds 50 dB.
+	•	Requires further tuning to generalize across other animal species.
+
+⸻
+
+Intended Use
+	•	Primary Users: Zoo keepers, animal researchers, and conservationists interested in analyzing animal communication and behavior.
+	•	Use Case: This system is designed to be deployed in environments where the Pygmy Hippopotamus is being observed, such as wildlife monitoring stations, zoos, or research facilities.
+
+Not Intended For:
+	•	Medical, legal, or any high-stakes decision-making processes.
+	•	Use with human subjects.
+
+⸻
+
+Ethical Considerations
+	•	Animal Welfare: The system is designed to be non-invasive, using only publicly available footage and audio, ensuring no harm or disturbance to the animals during data collection.
+	•	Privacy and Fairness: All data used is anonymized, and no personally identifiable information is involved in the data collection process.
+	•	Bias: The data collection process has been reviewed by experts to ensure accurate and representative annotations. However, the model’s performance may be biased by lighting conditions and environmental factors.
+
+⸻
+
+Deployment Recommendations
+	•	Retraining: The model requires retraining to handle different species or significantly different environmental conditions.
+	•	Monitoring: It is recommended to continuously monitor the model’s predictions to detect concept drift, as animal behaviors may evolve over time.
+	•	Hardware: This model can be deployed on servers with at least 16GB RAM and an NVIDIA GPU for optimal performance.
+
+⸻
+
+Model Limitations and Future Work
+	•	The model is not robust under all environmental conditions (e.g., low-light or noisy backgrounds) and should be trained with additional data for robustness.
+	•	Future work will include expanding the model to recognize additional behavior types and applying it to other animal species.
+	•	We also aim to optimize the model for lower resource consumption, enabling deployment in resource-limited settings.
+
+⸻
+
+Conclusion
+
+The MoodengTalk AI system represents a significant step in decoding animal communication using multimodal AI techniques. It combines advanced image and audio processing to provide insights into the behaviors of the Pygmy Hippopotamus, contributing to better understanding and conservation efforts.
+
+⸻
